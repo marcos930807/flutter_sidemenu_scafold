@@ -87,6 +87,7 @@ class ResponsiveScaffold extends StatefulWidget {
     this.menuFooter,
     this.menuHeader,
     this.appBar,
+    this.currentSelectedMenuItem = 0,
   }) : super(key: key);
 
   final List<MenuItemInfo> menuItems;
@@ -353,6 +354,8 @@ class ResponsiveScaffold extends StatefulWidget {
 
   ///Widget rendered after the [MenuItem] list
   final Widget? menuFooter;
+
+  final int currentSelectedMenuItem;
   @override
   _ResponsiveScaffoldState createState() => _ResponsiveScaffoldState();
 }
@@ -437,6 +440,7 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
                 onSelect: widget.onSelect,
                 menuFooter: widget.menuFooter,
                 menuHeader: widget.menuHeader,
+                selectedItem: widget.currentSelectedMenuItem,
                 // User pushed the menu button, change menu state, on desktop
                 // we toggle the the menuExpanded and not menuExpanded state.
                 // On not desktop size (phone or tablet) we toggle the state
@@ -495,6 +499,7 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
                   railWidth: widget.railWidth,
                   menuFooter: widget.menuFooter,
                   menuHeader: widget.menuHeader,
+                  selectedItem: widget.currentSelectedMenuItem,
                   onSelect: (int index) {
                     Navigator.of(context).pop();
                     widget.onSelect?.call(index);

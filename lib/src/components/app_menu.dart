@@ -6,23 +6,25 @@ import 'menu_item.dart';
 /// App side menu and rail
 
 class AppMenu extends StatefulWidget {
-  const AppMenu(
-      {Key? key,
-      this.title,
-      required this.maxWidth,
-      this.onOperate,
-      this.onSelect,
-      required this.railWidth,
-      required this.menuItems,
-      this.menuFooter,
-      this.menuHeader})
-      : super(key: key);
+  const AppMenu({
+    Key? key,
+    this.title,
+    required this.maxWidth,
+    this.onOperate,
+    this.onSelect,
+    required this.railWidth,
+    required this.menuItems,
+    this.menuFooter,
+    this.menuHeader,
+    this.selectedItem = 0,
+  }) : super(key: key);
   final Widget? title;
   final double maxWidth;
   final VoidCallback? onOperate;
   final ValueChanged<int>? onSelect;
   final double railWidth;
   final List<MenuItemInfo> menuItems;
+  final int selectedItem;
 
   ///Widget rendered before the [SideMenuItem] list
   final Widget? menuHeader;
@@ -36,6 +38,20 @@ class AppMenu extends StatefulWidget {
 
 class _AppMenuState extends State<AppMenu> {
   int selectedItem = 0;
+
+  @override
+  void didUpdateWidget(covariant AppMenu oldWidget) {
+    if (widget.selectedItem != oldWidget.selectedItem) {
+      selectedItem = widget.selectedItem;
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void initState() {
+    selectedItem = widget.selectedItem;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
