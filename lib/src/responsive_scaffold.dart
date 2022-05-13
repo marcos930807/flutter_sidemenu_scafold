@@ -471,6 +471,10 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
                     iconTheme: widget.appBar!.iconTheme,
                     actionsIconTheme: widget.appBar!.actionsIconTheme,
                     centerTitle: widget.appBar!.centerTitle,
+                    backgroundColor: widget.appBar!.backgroundColor,
+                    titleTextStyle: widget.appBar!.titleTextStyle,
+                    bottom: widget.appBar!.bottom,
+                    bottomOpacity: widget.appBar!.bottomOpacity,
                     // Some logic to show the implicit menu button on AppBar when
                     // there is no rail or menu.
                     automaticallyImplyLeading:
