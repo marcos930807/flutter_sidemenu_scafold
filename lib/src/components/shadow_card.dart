@@ -34,7 +34,8 @@ class ShadowCard extends StatelessWidget {
       decoration: BoxDecoration(
           gradient: gradient,
           color: backgroundColor ?? Theme.of(context).cardColor,
-          borderRadius: borderRadius ?? const BorderRadius.all(Radius.circular(10)),
+          borderRadius:
+              borderRadius ?? const BorderRadius.all(Radius.circular(10)),
           border: border,
           boxShadow: <BoxShadow>[
             if (Theme.of(context).brightness == Brightness.light)
@@ -44,7 +45,8 @@ class ShadowCard extends StatelessWidget {
               )
           ]),
       child: ClipRRect(
-        borderRadius: borderRadius ?? const BorderRadius.all(Radius.circular(10)),
+        borderRadius:
+            borderRadius ?? const BorderRadius.all(Radius.circular(10)),
         child: Material(
           color: Colors.transparent,
           elevation: elevetion ?? 0.0,

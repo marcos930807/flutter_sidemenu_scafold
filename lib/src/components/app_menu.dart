@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sidebar/src/components/shadow_card.dart';
 
@@ -78,7 +79,9 @@ class _AppMenuState extends State<AppMenu> {
                 // AppBar has so many nice things built in to handle text style,
                 // size and scaling for the title that are tedious to replicate
                 Padding(
-                  padding: const EdgeInsets.only(top: kToolbarHeight),
+                  padding: kIsWeb
+                      ? const EdgeInsets.all(0)
+                      : const EdgeInsets.only(top: 30.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
