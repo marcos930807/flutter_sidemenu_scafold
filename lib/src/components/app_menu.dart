@@ -77,27 +77,30 @@ class _AppMenuState extends State<AppMenu> {
                 // Widget would be less restrictive, but for simplicity, the
                 // AppBar has so many nice things built in to handle text style,
                 // size and scaling for the title that are tedious to replicate
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.all(14.0),
-                        child: IconButton(
-                          onPressed: () {
-                            widget.onOperate?.call();
-                          },
-                          tooltip: "Menu",
-                          icon: Icon(
-                            Icons.menu_open,
-                            color: Theme.of(context).iconTheme.color,
+                Padding(
+                  padding: const EdgeInsets.only(top: kToolbarHeight),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.all(14.0),
+                          child: IconButton(
+                            onPressed: () {
+                              widget.onOperate?.call();
+                            },
+                            tooltip: "Menu",
+                            icon: Icon(
+                              Icons.menu_open,
+                              color: Theme.of(context).iconTheme.color,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    if (size.maxWidth > 150)
-                      Flexible(child: widget.title ?? const SizedBox())
-                  ],
+                      if (size.maxWidth > 150)
+                        Flexible(child: widget.title ?? const SizedBox())
+                    ],
+                  ),
                 ),
                 if (widget.menuHeader != null) widget.menuHeader!,
                 Expanded(
