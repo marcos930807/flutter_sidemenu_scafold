@@ -87,7 +87,7 @@ class ResponsiveScaffold extends StatefulWidget {
     this.menuFooter,
     this.menuHeader,
     this.appBar,
-    this.currentSelectedMenuItem = 0,
+    this.currentSelectedMenuItemId,
   }) : super(key: key);
 
   final List<MenuItemInfo> menuItems;
@@ -141,8 +141,8 @@ class ResponsiveScaffold extends StatefulWidget {
   /// Defaults to [_kBreakpointShowFullMenu] 900.
   final double breakpointShowFullMenu;
 
-  /// Callback called with menu index when user taps on a menu item.
-  final ValueChanged<int>? onSelect;
+  /// Callback called with menu item id when user taps on a menu item.
+  final ValueChanged<String>? onSelect;
 
   // Rest of the properties are just standard Scaffold properties that
   // are passed along to it.
@@ -355,7 +355,7 @@ class ResponsiveScaffold extends StatefulWidget {
   ///Widget rendered after the [MenuItem] list
   final Widget? menuFooter;
 
-  final int currentSelectedMenuItem;
+  final String? currentSelectedMenuItemId;
   @override
   _ResponsiveScaffoldState createState() => _ResponsiveScaffoldState();
 }
@@ -440,7 +440,7 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
                 onSelect: widget.onSelect,
                 menuFooter: widget.menuFooter,
                 menuHeader: widget.menuHeader,
-                selectedItem: widget.currentSelectedMenuItem,
+                selectedItemId: widget.currentSelectedMenuItemId,
                 // User pushed the menu button, change menu state, on desktop
                 // we toggle the the menuExpanded and not menuExpanded state.
                 // On not desktop size (phone or tablet) we toggle the state
@@ -499,10 +499,10 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
                   railWidth: widget.railWidth,
                   menuFooter: widget.menuFooter,
                   menuHeader: widget.menuHeader,
-                  selectedItem: widget.currentSelectedMenuItem,
-                  onSelect: (int index) {
+                  selectedItemId: widget.currentSelectedMenuItemId,
+                  onSelect: (String itemId) {
                     Navigator.of(context).pop();
-                    widget.onSelect?.call(index);
+                    widget.onSelect?.call(itemId);
                   },
                   // User pushed menu button in Drawer, we close the Drawer and
                   // set menu state to not be closed, it will open as a rail.

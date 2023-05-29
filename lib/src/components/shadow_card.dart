@@ -69,7 +69,7 @@ class ShadowCard extends StatelessWidget {
       height: height,
       width: width,
       borderRadius: borderRadius,
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       border: Theme.of(context).brightness == Brightness.light
           ? Border.all(color: Theme.of(context).primaryColor.withAlpha(20))
           : null,

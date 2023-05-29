@@ -60,19 +60,23 @@ class _MyHomePageState extends State<MyHomePage> {
       extendBodyBehindAppBar: false,
       extendBody: true,
       menuItems: [
-        MenuItemInfo(icon: Icons.dashboard, label: "Dashboard"),
-        MenuItemInfo(icon: Icons.people, label: "Pacientes"),
-        MenuItemInfo(icon: Icons.medical_services, label: "Estudios"),
-        MenuItemInfo(icon: Icons.access_alarm, label: "Alarmas"),
-        MenuItemInfo(icon: Icons.accessibility_new_rounded, label: "Accesos"),
-        MenuItemInfo(icon: Icons.face, label: "Faces"),
+        MenuItemInfo(
+          id: "Dashboard",
+          icon: Icons.dashboard,
+          label: "Dashboard",
+        ),
+        MenuItemInfo(id: "Pacientes", icon: Icons.people, label: "Pacientes"),
+        MenuItemInfo(
+            id: "Estudios", icon: Icons.medical_services, label: "Estudios"),
       ],
       menuHeader: const _UserProfile(railWidth: 52),
       menuFooter: const Padding(
         padding: EdgeInsets.all(8.0),
         child: Text("Version 1.0"),
       ),
-      onSelect: (index) {},
+      onSelect: (id) {
+        debugPrint(id);
+      },
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
@@ -141,7 +145,7 @@ class _UserProfileState extends State<_UserProfile> {
                       radius: widget.railWidth / 2 - hPadding,
                       child: Text(
                         'MR',
-                        style: primaryTextTheme.subtitle1!.copyWith(
+                        style: primaryTextTheme.titleMedium!.copyWith(
                             color: theme.colorScheme.onPrimary,
                             fontWeight: FontWeight.w600),
                       ),
@@ -152,7 +156,7 @@ class _UserProfileState extends State<_UserProfile> {
                       child: Text(
                         'Marcos Rodriguez',
                         maxLines: 1,
-                        style: textTheme.subtitle1!
+                        style: textTheme.titleMedium!
                             .copyWith(fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -190,7 +194,7 @@ class _UserProfileState extends State<_UserProfile> {
                               child: Column(
                                 children: <Widget>[
                                   const Icon(Icons.person),
-                                  Text('Profile', style: textTheme.overline),
+                                  Text('Profile', style: textTheme.labelSmall),
                                 ],
                               ),
                             ),
@@ -200,7 +204,7 @@ class _UserProfileState extends State<_UserProfile> {
                               child: Column(
                                 children: <Widget>[
                                   const Icon(Icons.logout),
-                                  Text('Sign out', style: textTheme.overline),
+                                  Text('Sign out', style: textTheme.labelSmall),
                                 ],
                               ),
                             ),

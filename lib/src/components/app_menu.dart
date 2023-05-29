@@ -17,15 +17,16 @@ class AppMenu extends StatefulWidget {
     required this.menuItems,
     this.menuFooter,
     this.menuHeader,
-    this.selectedItem = 0,
+    this.selectedItemId,
   }) : super(key: key);
   final Widget? title;
   final double maxWidth;
   final VoidCallback? onOperate;
-  final ValueChanged<int>? onSelect;
+  //When Menu Item Is Selected
+  final ValueChanged<String>? onSelect;
   final double railWidth;
   final List<MenuItemInfo> menuItems;
-  final int selectedItem;
+  final String? selectedItemId;
 
   ///Widget rendered before the [SideMenuItem] list
   final Widget? menuHeader;
@@ -38,27 +39,24 @@ class AppMenu extends StatefulWidget {
 }
 
 class _AppMenuState extends State<AppMenu> {
-  int selectedItem = 0;
+  String? selectedItemId;
 
   @override
   void didUpdateWidget(covariant AppMenu oldWidget) {
-    if (widget.selectedItem != oldWidget.selectedItem) {
-      selectedItem = widget.selectedItem;
+    if (widget.selectedItemId != oldWidget.selectedItemId) {
+      selectedItemId = widget.selectedItemId;
     }
     super.didUpdateWidget(oldWidget);
   }
 
   @override
   void initState() {
-    selectedItem = widget.selectedItem;
+    selectedItemId = widget.selectedItemId;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final bool isDark = theme.brightness == Brightness.dark;
-
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints size) {
         // The overflow box is not the prettiest approach, but has some
@@ -120,11 +118,11 @@ class _AppMenuState extends State<AppMenu> {
                           menuWidth: widget.maxWidth,
                           onTap: () {
                             setState(() {
-                              selectedItem = i;
+                              selectedItemId = widget.menuItems[i].id;
                             });
-                            widget.onSelect?.call(i);
+                            widget.onSelect?.call(widget.menuItems[i].id);
                           },
-                          selected: selectedItem == i,
+                          selected: selectedItemId == widget.menuItems[i].id,
                           icon: widget.menuItems[i].icon,
                           label: widget.menuItems[i].label,
                           showDivider: false,

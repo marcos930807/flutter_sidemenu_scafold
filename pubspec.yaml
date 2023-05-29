@@ -1,6 +1,6 @@
 name: responsive_sidebar
 description: Responsive scaffold with sideMenu
-version: 0.0.2
+version: 0.0.4
 homepage: https://github.com/marcos930807/flutter_sidemenu_scafold
 
 environment:

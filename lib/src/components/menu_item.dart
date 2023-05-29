@@ -44,7 +44,7 @@ class SideMenuItem extends StatelessWidget {
             theme.colorScheme.onBackground);
 
     final Color textColor =
-        theme.textTheme.bodyText1?.color ?? theme.colorScheme.primary;
+        theme.textTheme.bodyLarge?.color ?? theme.colorScheme.primary;
 
     // The M3 guide calls for 12dp padding after the selection indicator on
     // the menu highlight in a Drawer or side menu. We can do that, but we
@@ -112,7 +112,7 @@ class SideMenuItem extends StatelessWidget {
                         else
                           Text(
                             label,
-                            style: theme.textTheme.bodyText1?.copyWith(
+                            style: theme.textTheme.bodyLarge?.copyWith(
                                 color: selected
                                     ? iconColor
                                     : textColor.withOpacity(0.8)),
@@ -133,7 +133,12 @@ class SideMenuItem extends StatelessWidget {
 class MenuItemInfo {
   final IconData icon;
   final String label;
+
+  /// Unique Id
+  final String id;
+
   MenuItemInfo({
+    required this.id,
     required this.icon,
     required this.label,
   });
